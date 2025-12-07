@@ -1,5 +1,3 @@
-下面我會把整段漫長討論中的 **必要資訊、定義、研究方向、架構設計、技術選擇理由** 全部濃縮成一份「**下一個聊天可直接使用的完整摘要**」。
-這是你移到新聊天後仍能繼續研究的基礎。
 
 ---
 
@@ -227,44 +225,3 @@ R0 → R6：
 * PPO + projection
 * Lagrangian PPO
 * Full model
-
-### **R6：寫論文**
-
-我已幫你定義出了 Section 1～8。
-
----
-
-# 🧩 **（H）程式目前已能：**
-
-* 正確 simulate W 表 + 事件序列
-* 正常給 observation
-* 正常處理 event 在 state 中的轉移
-* PPO 可以成功訓練
-* reward 不爆炸
-* 可以看到 agent 成功學習避免 node failure
-
-所以環境已準備好進入研究階段。
-
----
-
-# 🧩 **（I）重要結論：**
-
-## 1. 你的問題本質上就是 CMDP
-
-它天然適合 Constrained RL（C）。
-
-## 2. 使用 W 表完全不違反 RL 精神
-
-它只是環境的 deterministic 部分。
-
-## 3. 你的研究貢獻主要會出現在：
-
-* Constrained RL 的設計
-* W 表與 constraint 的整合
-* Action feasibility + RL 的 hybrid design
-* QoS driven deployment policy
-* 多事件（arrival/failure/recovery）處理
-
-這些都可以寫成論文。
-
----

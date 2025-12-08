@@ -148,7 +148,9 @@ def train(args):
     print("Training Summary:")
     print(f"Total episodes: {episode_num}")
     print(f"Total timesteps: {global_step}")
-    print(f"Average reward (last 100 episodes): {np.mean(episode_rewards[-100:]):.2f}")
+    if len(episode_rewards) > 0:
+        avg_episodes = min(100, len(episode_rewards))
+        print(f"Average reward (last {avg_episodes} episodes): {np.mean(episode_rewards[-avg_episodes:]):.2f}")
     print("=" * 80)
 
 

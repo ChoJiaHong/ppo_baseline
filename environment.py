@@ -28,12 +28,15 @@ class ServiceDeploymentEnv(gym.Env):
     - Reject/No action
     """
     
-    def __init__(self, num_nodes: int = 3, num_services: int = 5, max_agents: int = 10):
+    def __init__(self, num_nodes: int = 3, num_services: int = 5, max_agents: int = 10,
+                 node_capacity: float = 5.0, event_probabilities: Optional[List[float]] = None):
         super().__init__()
         
         self.num_nodes = num_nodes
         self.num_services = num_services
         self.max_agents = max_agents
+        self.default_node_capacity = node_capacity
+        self.event_probabilities = event_probabilities or [0.3, 0.2, 0.1, 0.1, 0.3]
         
         # Event types
         self.EVENT_TYPES = ['agent_arrival', 'agent_departure', 'node_failure', 'node_recovery', 'no_event']
@@ -65,7 +68,7 @@ class ServiceDeploymentEnv(gym.Env):
         self.node_occupancy = np.zeros(self.num_nodes, dtype=np.float32)
         
         # Max capacity per node
-        self.node_capacity = np.full(self.num_nodes, 5.0, dtype=np.float32)
+        self.node_capacity = np.full(self.num_nodes, self.default_node_capacity, dtype=np.float32)
         
         # Current number of active agents
         self.num_agents = 0
@@ -172,9 +175,8 @@ class ServiceDeploymentEnv(gym.Env):
     
     def _generate_next_event(self):
         """Generate the next random event."""
-        # Event probabilities
-        event_probs = [0.3, 0.2, 0.1, 0.1, 0.3]  # arrival, departure, failure, recovery, no_event
-        self.current_event_idx = self.np_random.choice(len(self.EVENT_TYPES), p=event_probs)
+        # Event probabilities: arrival, departure, failure, recovery, no_event
+        self.current_event_idx = self.np_random.choice(len(self.EVENT_TYPES), p=self.event_probabilities)
         self.current_event = self.EVENT_TYPES[self.current_event_idx]
     
     def render(self):

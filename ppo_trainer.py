@@ -6,7 +6,6 @@ import torch.nn as nn
 import torch.optim as optim
 import numpy as np
 from typing import Optional
-from torch.utils.tensorboard import SummaryWriter
 
 from policy import ActorCritic
 from buffer import RolloutBuffer

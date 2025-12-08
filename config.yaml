@@ -1,0 +1,36 @@
+# PPO Configuration File
+# This file contains default hyperparameters for PPO training
+
+# Environment Configuration
+env:
+  num_nodes: 3              # Number of edge nodes
+  num_services: 5           # Number of service types
+  max_agents: 10            # Maximum number of agents
+
+# Network Architecture
+network:
+  hidden_dim: 64            # Hidden layer dimension for policy network
+
+# PPO Hyperparameters
+ppo:
+  lr: 0.0003               # Learning rate
+  gamma: 0.99              # Discount factor
+  gae_lambda: 0.95         # GAE lambda parameter
+  clip_epsilon: 0.2        # PPO clipping epsilon
+  value_coef: 0.5          # Value loss coefficient
+  entropy_coef: 0.01       # Entropy bonus coefficient
+  max_grad_norm: 0.5       # Maximum gradient norm for clipping
+  update_epochs: 4         # Number of epochs per update
+  batch_size: 64           # Mini-batch size for updates
+
+# Training Configuration
+training:
+  total_timesteps: 100000  # Total training timesteps
+  update_interval: 2048    # Steps between policy updates
+  log_interval: 10         # Episodes between logging
+  save_interval: 10000     # Steps between saving checkpoints
+
+# Evaluation Configuration
+evaluation:
+  num_episodes: 10         # Number of episodes for evaluation
+  render: false            # Whether to render during evaluation

@@ -1,3 +1,24 @@
+---
+
+# 🚀 **PPO 基礎代碼已完成**
+
+本專案已包含完整的 PPO (Proximal Policy Optimization) 基礎實作代碼！
+
+📂 **快速開始：**
+- 查看 [README_PPO.md](README_PPO.md) 了解完整使用說明
+- 執行 `python demo.py` 查看快速示範
+- 執行 `python train.py` 開始訓練
+- 執行 `python evaluate.py --checkpoint_path checkpoints/ppo_final.pt` 評估訓練好的模型
+
+📦 **包含的模組：**
+- `environment.py` - 服務部署環境 (Gymnasium)
+- `policy.py` - Actor-Critic 策略網路
+- `buffer.py` - 經驗回放緩衝區
+- `ppo_trainer.py` - PPO 訓練器
+- `train.py` - 主訓練腳本
+- `evaluate.py` - 評估腳本
+- `demo.py` - 快速示範腳本
+- `config.yaml` - 配置檔案
 
 ---
 
